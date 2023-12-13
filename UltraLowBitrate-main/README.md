@@ -1,0 +1,80 @@
+# Ultra-low bitrate video compression using deep animation models
+
+This repository contains the source code for the papers
+[ULTRA-LOW BITRATE VIDEO CONFERENCING USING DEEP IMAGE ANIMATION](https://arxiv.org/abs/2012.00346v1),
+[A HYBRID DEEP ANIMATION CODEC FOR LOW-BITRATE VIDEO CONFERENCING](https://arxiv.org/abs/2207.13530) and 
+[PREDICTIVE CODING FOR ANIMATION-BASED VIDEO COMPRESSION](https://arxiv.org/abs/2307.04187)
+
+
+## Installation
+
+We support ```python3```. To install the dependencies run:
+```
+pip install -r requirements.txt
+```
+
+## Assets
+### YAML Config
+Describes the configuration settings for for training and testing the models. 
+See ```config/dac.yaml```, ```config/hdac.yaml```,```config/rdac.yaml```.
+Use ```--mode test``` at inference time with the same config file after changing the ```eval_params``` appropriately.
+
+
+### Datasets
+ 	**VoxCeleb**. Please follow the instruction from https://github.com/AliaksandrSiarohin/video-preprocessing.
+
+ 	**Creating your own videos**. 
+ 	The input videos should be cropped to target the speaker's face at a resolution of 256x256 (Updates are underway to add higher resolution). 
+
+    **Pre-processed videos (256x256 px)**
+    We provide preprocessed videos at the following link: [google-drive](https://drive.google.com/drive/folders/1g0U1ZCTszm3yrmIewg7FahXsxyMBfxKj?usp=sharing)
+
+    Download put the videos in ```datasets/train``` and ```datasets/inference``` folders.
+
+
+### Pre-trained checkpoint
+Checkpoints can be found under following link: [google-drive](https://drive.google.com/drive/folders/1_jIt9Bg-o_1-8_11DkVuHBvqHQH5e4tS?usp=drive_link). Download and place in the ```checkpoints/``` directory.
+
+
+
+#### Metrics
+We include a metrics module combining the suggestions from JPEG-AI with popular quantiative metrics used in computer vision and beyond.
+Supported metrics: 'psnr', 'psnr-hvs','fsim','iw_ssim','ms_ssim','vif','nlpd', 'vmaf','lpips'
+
+
+## Training
+Set the ```config/[MODEL_NAME].yaml``` parameters appropriately or use default (to reproduce our results) and run ```bash script_training.sh [MODEL_NAME]```. 
+The default setup uses a single GPU (NVIDIA-A100). However, training DAC, HDAC and RDAC can be trained on multiple GPUs by using distributed dataparallel and setting ```--device_ids``` parameter as desired.
+
+## Testing
+
+NOTE: ```baselines.yaml``` is used for HEVC, VVC and VVENC.
+Download the HEVC, VVC(VTM-12) from  [google-drive](https://drive.google.com/drive/folders/1KJELtQO_RvpFqu9YZYaXhyOksdbv9zWh?usp=sharing) and put them ```conventional_codecs/``` folder.
+
+Set the ```eval_params``` on the ```config/[MODEL_NAME].yaml``` file and run ```bash script_test.sh [MODEL_NAME]```.
+
+
+## Running the WebRTC App
+
+To run the WebRTC app for ultra-low-bitrate video conferencing, follow these steps:
+
+1. Switch to the directory called "webRTCApp."
+
+2. Run the following command to start the server and the client:
+
+   ```bash
+   node server.js
+   ```
+3. Open your web browser and enter the URL "http://localhost:3000" to start the sender.
+
+4. Open another web browser tab or window and enter the URL "http://localhost:3000/client" to start the receiver.
+
+5. Use the sender interface to upload the video you want to send, and the receiver will receive the video in real-time.
+
+This WebRTC app allows you to experience ultra-low-bitrate video conferencing using deep animation models.
+
+### Attributions
+This code base  contains source code from the following works:
+1.  [First Order Motion Model for Image Animation](https://papers.nips.cc/paper/8935-first-order-motion-model-for-image-animation) for the base architecture of deep image animation with unsupervised keypoints.
+2. [Compressai](https://github.com/InterDigitalInc/CompressAI) for Learned image compression.
+3. [JPEG-AI](https://gitlab.com/wg1/jpeg-ai/jpeg-ai-qaf) for evaluation metrics.

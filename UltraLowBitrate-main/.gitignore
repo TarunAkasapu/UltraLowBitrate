@@ -1,0 +1,14 @@
+**__pychache__
+
+checkpoints/
+
+datasets/
+results/
+
+cpks/
+
+conventional_codecs/hevc_hm
+conventional_codecs/vtm
+conventional_codecs/vvenc
+conventional_codecs/vvdec
+
