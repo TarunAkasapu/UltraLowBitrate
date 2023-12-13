@@ -11,8 +11,6 @@ Ultra-low bitrate video compression refers to the process of compressing video d
 The proposed approach aims to address the limitations of existing video codecs.
 Model-based approach and utilizing deep neural networks, the system encodes motion information as keypoint displacement and reconstructs the video signal at the decoder side.
 
-![image](https://github.com/TarunAkasapu/UltraLowBitrate/assets/91962762/e914f73f-d9e6-429f-b50f-4f98bd13e16d)
-
 ## Installation
 
 We support ```python3```. To install the dependencies run:
