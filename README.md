@@ -5,7 +5,7 @@ This repository contains the source code for the papers
 [A HYBRID DEEP ANIMATION CODEC FOR LOW-BITRATE VIDEO CONFERENCING](https://arxiv.org/abs/2207.13530) and 
 [PREDICTIVE CODING FOR ANIMATION-BASED VIDEO COMPRESSION](https://arxiv.org/abs/2307.04187)
 
-**Introduction**
+## Introduction
 
 Ultra-low bitrate video compression refers to the process of compressing video data to an extremely low bitrate while maintaining an acceptable level of visual quality.
 The proposed approach aims to address the limitations of existing video codecs.
