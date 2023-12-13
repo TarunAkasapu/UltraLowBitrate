@@ -80,12 +80,12 @@ This WebRTC app allows you to experience ultra-low-bitrate video conferencing us
 
 ## Challenges Faced
 Environment
-1. The code runs on specific operating systems, including linux
-2. Most of the dependencies are outdated
+1. The code runs on specific operating systems, including linux.
+2. Most of the dependencies are outdated.
 3. Some changes were required in the driver code because of
-4. Deprecated calls
-5. Conversion of CUDA calls to CPU calls
-6. Resource intensive models, slow processing
+4. Deprecated calls.
+5. Conversion of CUDA calls to CPU calls.
+6. Resource intensive models, slow processing.
 
 
 ### Attributions
