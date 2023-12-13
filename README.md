@@ -78,6 +78,16 @@ To run the WebRTC app for ultra-low-bitrate video conferencing, follow these ste
 
 This WebRTC app allows you to experience ultra-low-bitrate video conferencing using deep animation models.
 
+## Challenges Faced
+Environment
+1. The code runs on specific operating systems, including linux
+2. Most of the dependencies are outdated
+3. Some changes were required in the driver code because of
+4. Deprecated calls
+5. Conversion of CUDA calls to CPU calls
+6. Resource intensive models, slow processing
+
+
 ### Attributions
 This code base  contains source code from the following works:
 1.  [First Order Motion Model for Image Animation](https://papers.nips.cc/paper/8935-first-order-motion-model-for-image-animation) for the base architecture of deep image animation with unsupervised keypoints.
